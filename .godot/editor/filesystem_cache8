@@ -1,3 +1,13 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1708626320
+::res://::1708629130
 icon.svg::CompressedTexture2D::6301579166802971957::1708626315::1708626322::1::::<><>::
+::res://Assets/::1708631389
+startbutton.png::CompressedTexture2D::6751128432310111408::1708631389::1708631394::1::::<><>::
+titlescreen1.png::CompressedTexture2D::774925083514765439::1708629101::1708629103::1::::<><>::
+titlescreenmoon.png::CompressedTexture2D::1848175072746680663::1708629868::1708629873::1::::<><>::
+titletext.png::CompressedTexture2D::641981088492712210::1708630742::1708630744::1::::<><>::
+::res://Scenes/::1708630951
+GameManager.tscn::PackedScene::624047081898002387::1708630951::0::1::::<><>::
+TitleScreen.tscn::PackedScene::3944102375535717670::1708630951::0::1::::<><>::uid://lbm5x04233a6::::res://Assets/titlescreen1.png<>uid://1ljf5ql6ei3p::::res://Assets/titlescreenmoon.png<>res://Scripts/moon.gd<>uid://je8lm7ltuv5s::::res://Assets/titletext.png
+::res://Scripts/::1708630388
+moon.gd::GDScript::-1::1708630388::0::1::::<>CharacterBody2D<>::
