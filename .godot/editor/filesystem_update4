@@ -2,3 +2,6 @@ res://Scenes/Star.tscn
 res://Scenes/Battle.tscn
 res://Scenes/GameManager.tscn
 res://Scenes/TitleScreen.tscn
+res://Scripts/Star.gd
+res://Scripts/Battle.gd
+res://Scripts/DesmondShip.gd
