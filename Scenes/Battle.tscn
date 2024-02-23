@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://cgkg2h5c6j733"]
+
+[ext_resource type="Script" path="res://Scripts/Battle.gd" id="1_78srq"]
+[ext_resource type="Texture2D" uid="uid://bp25oiynbeaww" path="res://Assets/whitebg.png" id="1_d7p1q"]
+[ext_resource type="Texture2D" uid="uid://dd1lnf3s3x5x7" path="res://Assets/Desmond ship/shipidle.png" id="2_72a2d"]
+[ext_resource type="Texture2D" uid="uid://byguh6mplba18" path="res://Assets/Desmond ship/shipmove1.png" id="4_ufsin"]
+[ext_resource type="Texture2D" uid="uid://1duovigffqwl" path="res://Assets/Desmond ship/shipmove2.png" id="5_4rc42"]
+[ext_resource type="Texture2D" uid="uid://b7qd05kgpvwkq" path="res://Assets/Desmond ship/shipmove3.png" id="6_enymk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bebhp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_72a2d")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ufsin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4rc42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_enymk")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mxxge"]
+radius = 80.0
+height = 280.0
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_78srq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_d7p1q")
+offset = Vector2(640, 360)
+
+[node name="Desmond Ship" type="CharacterBody2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(0.2, 0.2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Desmond Ship"]
+position = Vector2(8.6, 0)
+sprite_frames = SubResource("SpriteFrames_bebhp")
+animation = &"idle"
+frame_progress = 0.788278
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Desmond Ship"]
+position = Vector2(-5, -20)
+shape = SubResource("CapsuleShape2D_mxxge")
