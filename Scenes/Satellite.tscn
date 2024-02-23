@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://doe1pyixxg7sg"]
+
+[ext_resource type="Texture2D" uid="uid://cvjertsyjgo6m" path="res://Assets/Satellite/satellite1.png" id="1_mic4n"]
+[ext_resource type="Texture2D" uid="uid://6uerrvf5x70f" path="res://Assets/Satellite/satellite2.png" id="2_1ln4q"]
+[ext_resource type="Texture2D" uid="uid://ccow2aiky58i1" path="res://Assets/Satellite/satellite3.png" id="3_5ddkf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8wq2e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mic4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1ln4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5ddkf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j0bth"]
+radius = 126.667
+height = 826.667
+
+[node name="Satellite" type="CharacterBody2D"]
+scale = Vector2(0.15, 0.15)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8wq2e")
+frame = 2
+frame_progress = 0.307669
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.68434e-14, 13.3333)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_j0bth")

@@ -5,3 +5,4 @@ res://Scenes/TitleScreen.tscn
 res://Scripts/Star.gd
 res://Scripts/Battle.gd
 res://Scripts/DesmondShip.gd
+res://Scenes/Satellite.tscn
