@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 var parentScene : Node2D
-@export var SPEED = 300.0
+
 @export var xvelocity = 0
 @export var yvelocity = 0
 
@@ -17,8 +17,8 @@ func _ready():
 func _physics_process(delta):
 	xvelocity = parentScene.xvelocity
 	yvelocity = parentScene.yvelocity
-	velocity.x = -xvelocity * SPEED
-	velocity.y = -yvelocity * SPEED
+	velocity.x = -xvelocity
+	velocity.y = -yvelocity
 	
 	if position.x > 2000:
 		position.x -= 2000
