@@ -23,16 +23,11 @@ func get_total_velocity():
 	return (-parentXVelocity + xvelocity) * (-parentXVelocity + xvelocity) + (-parentYVelocity + yvelocity) * (-parentYVelocity + yvelocity)
 	
 func get_velocity_direction():
-	if(-parentYVelocity + yvelocity) != 0:
-		return atan((-parentXVelocity + xvelocity) / (-parentYVelocity + yvelocity))
-	else:
-		if (-parentXVelocity + xvelocity) > 0:
-			return 2*PI
-		return 0
+	return Vector2(1,0).angle_to(Vector2((-parentXVelocity + xvelocity), (-parentYVelocity + yvelocity)))
 	
 
 func _physics_process(delta):
-	if get_total_velocity() < 0:
+	if get_total_velocity() < 1:
 		angleToPlayer = global_position.direction_to(Vector2(640, 360)).angle()
 		turn_towards(angleToPlayer,delta,1)
 	else:
