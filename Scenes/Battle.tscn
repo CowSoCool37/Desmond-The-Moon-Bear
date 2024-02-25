@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cgkg2h5c6j733"]
+[gd_scene load_steps=13 format=3 uid="uid://cgkg2h5c6j733"]
 
 [ext_resource type="Script" path="res://Scripts/Battle.gd" id="1_78srq"]
 [ext_resource type="Texture2D" uid="uid://bp25oiynbeaww" path="res://Assets/whitebg.png" id="1_d7p1q"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://byguh6mplba18" path="res://Assets/Desmond ship/shipmove1.png" id="4_ufsin"]
 [ext_resource type="Texture2D" uid="uid://1duovigffqwl" path="res://Assets/Desmond ship/shipmove2.png" id="5_4rc42"]
 [ext_resource type="Texture2D" uid="uid://b7qd05kgpvwkq" path="res://Assets/Desmond ship/shipmove3.png" id="6_enymk"]
+[ext_resource type="PackedScene" uid="uid://brpbbyi2u3l3q" path="res://Scenes/Bullet.tscn" id="6_oa4j6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bebhp"]
 animations = [{
@@ -52,10 +53,13 @@ offset = Vector2(640, 360)
 [node name="Desmond Ship" type="CharacterBody2D" parent="." node_paths=PackedStringArray("parentScene", "animations")]
 position = Vector2(640, 360)
 scale = Vector2(0.2, 0.2)
+collision_layer = 3
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("4_0ter6")
 parentScene = NodePath("..")
 animations = NodePath("AnimatedSprite2D")
+bullet = ExtResource("6_oa4j6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Desmond Ship"]
 position = Vector2(-9.99988, 10)

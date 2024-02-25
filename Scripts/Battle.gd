@@ -13,11 +13,11 @@ func _ready():
 		inst.parentScene = self
 		background.add_child(inst)
 	
-	for i in range(1):
+	for i in range(3):
 		var inst = satellite.instantiate() as CharacterBody2D
 		inst.parentScene = self
-		inst.position.x = randf_range(500, 500)
-		inst.position.y = randf_range(500, 500)
+		inst.position.x = randf_range(500, 800)
+		inst.position.y = randf_range(500, 800)
 		background.add_child(inst)
 
 

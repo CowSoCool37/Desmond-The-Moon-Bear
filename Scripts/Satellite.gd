@@ -9,7 +9,24 @@ var parentXVelocity = 0
 var parentYVelocity = 0
 var angleToPlayer
 
+var targetOffsetX = 0
+var targetOffsetY = 0
+
+const matchSpeed = 200*200
+
+const inaccuracy = 30
+var timer = 0
+var timeMax = 0
+
+func randomize_target():
+	randomize()
+	timer = 0
+	timeMax = randf_range(2, 3)
+	targetOffsetX = randf_range(-inaccuracy, inaccuracy)
+	targetOffsetY = randf_range(-inaccuracy, inaccuracy)
+
 func _ready():
+	randomize_target()
 	animation.play("default")
 	
 func turn_towards(targetDirection, delta, turnrate):
@@ -27,8 +44,8 @@ func get_velocity_direction():
 	
 
 func _physics_process(delta):
-	if get_total_velocity() < 1:
-		angleToPlayer = global_position.direction_to(Vector2(640, 360)).angle()
+	if get_total_velocity() < matchSpeed:
+		angleToPlayer = global_position.direction_to(Vector2(640 + targetOffsetX, 360 + targetOffsetY)).angle()
 		turn_towards(angleToPlayer,delta,1)
 	else:
 		var retrograde = fposmod(get_velocity_direction() + PI, 2*PI)
@@ -40,6 +57,10 @@ func _physics_process(delta):
 	yvelocity += sin(rotation) * SPEED * delta
 	velocity.x = -parentXVelocity + xvelocity
 	velocity.y = -parentYVelocity + yvelocity
+	
+	timer += delta
+	if timer > timeMax:
+		randomize_target()
 	
 
 	move_and_slide()

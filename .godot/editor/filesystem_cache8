@@ -1,7 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1708807263
+::res://::1708807627
 icon.svg::CompressedTexture2D::6301579166802971957::1708626315::1708626322::1::::<><>::
-::res://Assets/::1708728580
+::res://Assets/::1708835042
+bullet.png::CompressedTexture2D::344962131462529125::1708835026::1708835042::1::::<><>::
 star.png::CompressedTexture2D::1601377529877566029::1708721668::1708721670::1::::<><>::
 startbutton.png::CompressedTexture2D::6751128432310111408::1708631389::1708631394::1::::<><>::
 titlescreen1.png::CompressedTexture2D::774925083514765439::1708629101::1708629103::1::::<><>::
@@ -17,15 +18,16 @@ shipmove3.png::CompressedTexture2D::4665722111443072788::1708721392::1708721454:
 satellite1.png::CompressedTexture2D::6265660736891731746::1708729875::1708730251::1::::<><>::
 satellite2.png::CompressedTexture2D::2217415859933702735::1708730071::1708730251::1::::<><>::
 satellite3.png::CompressedTexture2D::4943504346341477342::1708730194::1708730251::1::::<><>::
-::res://Scenes/::1708730481
-Battle.tscn::PackedScene::5215031139287297612::1708727292::0::1::::<><>::res://Scripts/Battle.gd<>uid://bp25oiynbeaww::::res://Assets/whitebg.png<>uid://dd1lnf3s3x5x7::::res://Assets/Desmond ship/shipidle.png<>uid://c1bvwrh0ctoe1::::res://Scenes/Star.tscn<>res://Scripts/DesmondShip.gd<>uid://byguh6mplba18::::res://Assets/Desmond ship/shipmove1.png<>uid://1duovigffqwl::::res://Assets/Desmond ship/shipmove2.png<>uid://b7qd05kgpvwkq::::res://Assets/Desmond ship/shipmove3.png
-GameManager.tscn::PackedScene::624047081898002387::1708727292::0::1::::<><>::
-Satellite.gd::GDScript::-1::1708807618::0::1::::<>CharacterBody2D<>::
-Satellite.tscn::PackedScene::8151770075743359850::1708730481::0::1::::<><>::uid://cvjertsyjgo6m::::res://Assets/Satellite/satellite1.png<>uid://6uerrvf5x70f::::res://Assets/Satellite/satellite2.png<>uid://ccow2aiky58i1::::res://Assets/Satellite/satellite3.png
-Star.tscn::PackedScene::6601130928893012082::1708727292::0::1::::<><>::uid://w2ypo1fuoadx::::res://Assets/star.png<>res://Scripts/Star.gd
-TitleScreen.tscn::PackedScene::3944102375535717670::1708727292::0::1::::<><>::uid://lbm5x04233a6::::res://Assets/titlescreen1.png<>uid://1ljf5ql6ei3p::::res://Assets/titlescreenmoon.png<>res://Scripts/moon.gd<>uid://je8lm7ltuv5s::::res://Assets/titletext.png<>uid://c3gkdmmi74uwm::::res://Assets/startbutton.png
-::res://Scripts/::1708726650
-Battle.gd::GDScript::-1::1708726650::0::1::::<>Node2D<>::
-DesmondShip.gd::GDScript::-1::1708726492::0::1::::<>CharacterBody2D<>::
+::res://Scenes/::1708835142
+Battle.tscn::PackedScene::5215031139287297612::1708835444::0::1::::<><>::res://Scripts/Battle.gd<>uid://bp25oiynbeaww::::res://Assets/whitebg.png<>uid://dd1lnf3s3x5x7::::res://Assets/Desmond ship/shipidle.png<>uid://c1bvwrh0ctoe1::::res://Scenes/Star.tscn<>uid://doe1pyixxg7sg::::res://Scenes/Satellite.tscn<>res://Scripts/DesmondShip.gd<>uid://byguh6mplba18::::res://Assets/Desmond ship/shipmove1.png<>uid://1duovigffqwl::::res://Assets/Desmond ship/shipmove2.png<>uid://b7qd05kgpvwkq::::res://Assets/Desmond ship/shipmove3.png
+Bullet.tscn::PackedScene::3610660468810655732::1708835482::0::1::::<><>::res://Scripts/Star.gd<>uid://e6dqge81iter::::res://Assets/bullet.png
+GameManager.tscn::PackedScene::624047081898002387::1708834675::0::1::::<><>::
+Satellite.tscn::PackedScene::8151770075743359850::1708835450::0::1::::<><>::res://Scripts/Satellite.gd<>uid://cvjertsyjgo6m::::res://Assets/Satellite/satellite1.png<>uid://6uerrvf5x70f::::res://Assets/Satellite/satellite2.png<>uid://ccow2aiky58i1::::res://Assets/Satellite/satellite3.png
+Star.tscn::PackedScene::6601130928893012082::1708834676::0::1::::<><>::uid://w2ypo1fuoadx::::res://Assets/star.png<>res://Scripts/Star.gd
+TitleScreen.tscn::PackedScene::3944102375535717670::1708834675::0::1::::<><>::uid://lbm5x04233a6::::res://Assets/titlescreen1.png<>uid://1ljf5ql6ei3p::::res://Assets/titlescreenmoon.png<>res://Scripts/moon.gd<>uid://je8lm7ltuv5s::::res://Assets/titletext.png<>uid://c3gkdmmi74uwm::::res://Assets/startbutton.png
+::res://Scripts/::1708834673
+Battle.gd::GDScript::-1::1708833868::0::1::::<>Node2D<>::
+DesmondShip.gd::GDScript::-1::1708833657::0::1::::<>CharacterBody2D<>::
 moon.gd::GDScript::-1::1708630388::0::1::::<>CharacterBody2D<>::
-Star.gd::GDScript::-1::1708726359::0::1::::<>CharacterBody2D<>::
+Satellite.gd::GDScript::-1::1708834673::0::1::::<>CharacterBody2D<>::
+Star.gd::GDScript::-1::1708809544::0::1::::<>CharacterBody2D<>::

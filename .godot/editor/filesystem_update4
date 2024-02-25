@@ -7,3 +7,5 @@ res://Scenes/TitleScreen.tscn
 res://Scenes/Battle.tscn
 res://Scenes/Satellite.tscn
 res://Scripts/Battle.gd
+res://Scenes/Bullet.tscn
+res://Scripts/Bullet.gd
