@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://doe1pyixxg7sg"]
+[gd_scene load_steps=8 format=3 uid="uid://doe1pyixxg7sg"]
 
 [ext_resource type="Script" path="res://Scripts/Satellite.gd" id="1_fbr8l"]
 [ext_resource type="Texture2D" uid="uid://cvjertsyjgo6m" path="res://Assets/Satellite/satellite1.png" id="1_mic4n"]
@@ -26,6 +26,9 @@ animations = [{
 radius = 126.667
 height = 826.667
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbxwv"]
+radius = 860.93
+
 [node name="Satellite" type="CharacterBody2D" node_paths=PackedStringArray("animation")]
 scale = Vector2(0.15, 0.15)
 collision_layer = 5
@@ -43,3 +46,13 @@ frame_progress = 0.307669
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5.68434e-14, 13.3333)
 shape = SubResource("CapsuleShape2D_j0bth")
+
+[node name="AvoidArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AvoidArea"]
+shape = SubResource("CircleShape2D_hbxwv")
+
+[connection signal="body_entered" from="AvoidArea" to="." method="_on_avoid_area_body_entered"]
+[connection signal="body_exited" from="AvoidArea" to="." method="_on_avoid_area_body_exited"]

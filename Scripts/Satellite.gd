@@ -7,7 +7,7 @@ var xvelocity = 0
 var yvelocity = 0
 var parentXVelocity = 0
 var parentYVelocity = 0
-var angleToPlayer
+var targetAngle
 
 var targetOffsetX = 0
 var targetOffsetY = 0
@@ -17,6 +17,9 @@ const matchSpeed = 200*200
 const inaccuracy = 30
 var timer = 0
 var timeMax = 0
+
+var avoidObjects = []
+
 
 func randomize_target():
 	randomize()
@@ -44,9 +47,20 @@ func get_velocity_direction():
 	
 
 func _physics_process(delta):
-	if get_total_velocity() < matchSpeed:
-		angleToPlayer = global_position.direction_to(Vector2(640 + targetOffsetX, 360 + targetOffsetY)).angle()
-		turn_towards(angleToPlayer,delta,1)
+	if len(avoidObjects) > 0:
+		var avgLocation = Vector2(0,0)
+		targetAngle = 0
+		for i in avoidObjects:
+			avgLocation += i.position
+		avgLocation /= len(avoidObjects)
+		
+		targetAngle = global_position.direction_to(avgLocation).angle() + PI
+		turn_towards(targetAngle,delta,1)
+		
+	elif get_total_velocity() < matchSpeed:
+		targetAngle = global_position.direction_to(Vector2(640 + targetOffsetX, 360 + targetOffsetY)).angle()
+		turn_towards(targetAngle,delta,1)
+		
 	else:
 		var retrograde = fposmod(get_velocity_direction() + PI, 2*PI)
 		turn_towards(retrograde,delta,2)
@@ -62,5 +76,14 @@ func _physics_process(delta):
 	if timer > timeMax:
 		randomize_target()
 	
-
+	#print(avoidObjects)
 	move_and_slide()
+
+
+func _on_avoid_area_body_entered(body):
+	if body != self:
+		avoidObjects.append(body)
+
+
+func _on_avoid_area_body_exited(body):
+	avoidObjects.erase(body)
