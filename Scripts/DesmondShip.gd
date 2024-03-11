@@ -7,8 +7,12 @@ var thrust = 0
 const SPEED = 200
 const playerDrag = 0.2
 
+var hp = 100
+
 const firingCoolDown = 0.3
 var firingTimer = 0
+
+@export var healthbar : ProgressBar
 
 func fire_bullet():
 	firingTimer = 0
@@ -35,6 +39,10 @@ func get_input():
 			fire_bullet()
 
 func _physics_process(delta):
+	healthbar.value = hp
+	if hp <= 0:
+		print("rip bozo")
+	
 	get_input()
 	look_at(get_global_mouse_position())
 	parentScene.xvelocity += cos(rotation) * thrust * SPEED * delta

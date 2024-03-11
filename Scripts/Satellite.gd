@@ -20,6 +20,12 @@ var timeMax = 0
 
 var avoidObjects = []
 
+var hp = 100
+
+var firingTimer = 2
+var reload = 2
+
+@export var bullet : PackedScene
 
 func randomize_target():
 	randomize()
@@ -44,9 +50,28 @@ func get_total_velocity():
 	
 func get_velocity_direction():
 	return Vector2(1,0).angle_to(Vector2((-parentXVelocity + xvelocity), (-parentYVelocity + yvelocity)))
+
+
+func fire_bullet():
+	firingTimer = reload
+	var inst = bullet.instantiate() as CharacterBody2D
+	inst.parentScene = parentScene
+	inst.position = position
+	inst.rotation = rotation
+	inst.xvelocity = parentScene.xvelocity + cos(rotation) * 300
+	inst.yvelocity = parentScene.yvelocity + sin(rotation) * 300
+	inst.position.x += cos(rotation) * 30
+	inst.position.y += sin(rotation) * 30
+	parentScene.add_child(inst)
 	
 
 func _physics_process(delta):
+	if firingTimer >= 0:
+		firingTimer -= delta
+
+	if hp <= 0:
+		queue_free()
+	
 	if len(avoidObjects) > 0:
 		var avgLocation = Vector2(0,0)
 		targetAngle = 0
@@ -60,6 +85,8 @@ func _physics_process(delta):
 	elif get_total_velocity() < matchSpeed:
 		targetAngle = global_position.direction_to(Vector2(640 + targetOffsetX, 360 + targetOffsetY)).angle()
 		turn_towards(targetAngle,delta,1)
+		if firingTimer <= 0:
+			fire_bullet()
 		
 	else:
 		var retrograde = fposmod(get_velocity_direction() + PI, 2*PI)

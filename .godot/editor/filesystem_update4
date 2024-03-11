@@ -1,8 +1,12 @@
+res://Scenes/Satellite.tscn
+res://Scripts/Bullet.gd
+res://Scripts/Satellite.gd
 res://Scenes/GameManager.tscn
 res://Scenes/TitleScreen.tscn
 res://Scenes/Battle.tscn
 res://Scenes/Star.tscn
-res://Scenes/Satellite.tscn
 res://Scenes/Bullet.tscn
-res://Scripts/Satellite.gd
 res://Scripts/Battle.gd
+res://Scenes/SatelliteBullet.tscn
+res://Scripts/DesmondShip.gd
+res://Scripts/SatelliteBullet.gd

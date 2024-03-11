@@ -50,7 +50,7 @@ satellite = ExtResource("3_2kjhv")
 texture = ExtResource("1_d7p1q")
 offset = Vector2(640, 360)
 
-[node name="Desmond Ship" type="CharacterBody2D" parent="." node_paths=PackedStringArray("parentScene", "animations")]
+[node name="Desmond Ship" type="CharacterBody2D" parent="." node_paths=PackedStringArray("parentScene", "animations", "healthbar")]
 position = Vector2(640, 360)
 scale = Vector2(0.2, 0.2)
 collision_layer = 3
@@ -60,6 +60,7 @@ script = ExtResource("4_0ter6")
 parentScene = NodePath("..")
 animations = NodePath("AnimatedSprite2D")
 bullet = ExtResource("6_oa4j6")
+healthbar = NodePath("../Health Bar")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Desmond Ship"]
 position = Vector2(-9.99988, 10)
@@ -72,3 +73,10 @@ frame_progress = 0.788278
 position = Vector2(-4.76837e-07, -1.90735e-06)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mxxge")
+
+[node name="Health Bar" type="ProgressBar" parent="."]
+offset_left = 359.0
+offset_top = 671.0
+offset_right = 917.0
+offset_bottom = 698.0
+show_percentage = false

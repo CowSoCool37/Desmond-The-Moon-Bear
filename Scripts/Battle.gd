@@ -5,6 +5,9 @@ extends Node2D
 @export var star : PackedScene
 @export var background : Sprite2D
 @export var satellite : PackedScene
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
@@ -13,7 +16,7 @@ func _ready():
 		inst.parentScene = self
 		background.add_child(inst)
 	
-	for i in range(20):
+	for i in range(3):
 		var inst = satellite.instantiate() as CharacterBody2D
 		inst.parentScene = self
 		inst.position.x = randf_range(500, 800)
