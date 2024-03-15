@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ecjvnrbon3h0"]
+[gd_scene load_steps=15 format=3 uid="uid://ecjvnrbon3h0"]
 
 [ext_resource type="Script" path="res://Scripts/Effect.gd" id="1_4cxlx"]
 [ext_resource type="Texture2D" uid="uid://bt8rgf2retf54" path="res://Assets/effects/smoke1.png" id="2_at4jy"]
@@ -7,6 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://b368hire5iu1y" path="res://Assets/effects/smoke4.png" id="5_j1m8d"]
 [ext_resource type="Texture2D" uid="uid://cyyvgmf3wd4hn" path="res://Assets/effects/smoke5.png" id="6_kaw4b"]
 [ext_resource type="Texture2D" uid="uid://ds3ifwp31x2oi" path="res://Assets/effects/smoke6.png" id="7_7kai3"]
+[ext_resource type="Texture2D" uid="uid://8rorrqx3hwow" path="res://Assets/effects/sparks1.png" id="8_gttsl"]
+[ext_resource type="Texture2D" uid="uid://cx2homem14sl" path="res://Assets/effects/sparks2.png" id="9_bgqkc"]
+[ext_resource type="Texture2D" uid="uid://gpi8ovb8ahpr" path="res://Assets/effects/sparks3.png" id="10_ma307"]
+[ext_resource type="Texture2D" uid="uid://c4md33cmplhpk" path="res://Assets/effects/sparks4.png" id="11_ts12h"]
+[ext_resource type="Texture2D" uid="uid://d16jvdpnrlh75" path="res://Assets/effects/sparks5.png" id="12_vgb4n"]
+[ext_resource type="Texture2D" uid="uid://drp7cdbdcbhvf" path="res://Assets/effects/sparks6.png" id="13_ijfm6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tpk17"]
 animations = [{
@@ -32,6 +38,29 @@ animations = [{
 "loop": false,
 "name": &"smoke",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_gttsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bgqkc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ma307")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ts12h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vgb4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ijfm6")
+}],
+"loop": false,
+"name": &"sparks",
+"speed": 12.0
 }]
 
 [node name="Effect" type="CharacterBody2D"]
@@ -44,4 +73,4 @@ script = ExtResource("1_4cxlx")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.86102e-06, 0)
 sprite_frames = SubResource("SpriteFrames_tpk17")
-animation = &"smoke"
+animation = &"sparks"

@@ -13,6 +13,8 @@ const firingCoolDown = 0.3
 var firingTimer = 0
 
 @export var healthbar : ProgressBar
+@export var effect : PackedScene
+var dead = false
 
 func fire_bullet():
 	firingTimer = 0
@@ -40,17 +42,29 @@ func get_input():
 
 func _physics_process(delta):
 	healthbar.value = hp
-	if hp <= 0:
+	if hp <= 0 and not dead:
+		var inst = effect.instantiate() as CharacterBody2D
+		inst.effect = 2
+		inst.lifetime = 0.5
+		inst.parentScene = parentScene
+		inst.position = position
+		inst.rotation = rotation
+		inst.xvelocity =  parentScene.xvelocity*0.9
+		inst.yvelocity = parentScene.yvelocity*0.9
+
+		parentScene.add_child(inst)
 		print("rip bozo")
 		self.scale = Vector2.ZERO
+		dead = true
 	
-	get_input()
-	look_at(get_global_mouse_position())
-	parentScene.xvelocity += cos(rotation) * thrust * SPEED * delta
-	parentScene.yvelocity += sin(rotation) * thrust * SPEED * delta
-	
-	parentScene.xvelocity *= 1 - delta*playerDrag
-	parentScene.yvelocity *= 1 - delta*playerDrag
+	if not dead:
+		get_input()
+		look_at(get_global_mouse_position())
+		parentScene.xvelocity += cos(rotation) * thrust * SPEED * delta
+		parentScene.yvelocity += sin(rotation) * thrust * SPEED * delta
+		
+		parentScene.xvelocity *= 1 - delta*playerDrag
+		parentScene.yvelocity *= 1 - delta*playerDrag
 	
 	firingTimer += delta
 	move_and_slide()

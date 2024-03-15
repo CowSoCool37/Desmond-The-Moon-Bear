@@ -10,3 +10,5 @@ res://Scripts/SatelliteBullet.gd
 res://Scenes/Effect.tscn
 res://Scripts/Bullet.gd
 res://Scripts/DesmondShip.gd
+res://Scripts/Satellite.gd
+res://Scenes/GameManager.gd

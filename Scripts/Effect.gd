@@ -28,6 +28,9 @@ func _physics_process(delta):
 	
 	if effect == 1:
 		animations.play("smoke")
+	if effect == 2:
+		animations.play("sparks")
+		self.scale = Vector2(1,1)
 	
 	lifetimer += delta
 	if lifetimer > lifetime:

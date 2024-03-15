@@ -26,6 +26,7 @@ var firingTimer = 2
 var reload = 2
 
 @export var bullet : PackedScene
+@export var effect : PackedScene
 
 func randomize_target():
 	randomize()
@@ -70,6 +71,16 @@ func _physics_process(delta):
 		firingTimer -= delta
 
 	if hp <= 0:
+		var inst = effect.instantiate() as CharacterBody2D
+		inst.effect = 2
+		inst.lifetime = 0.5
+		inst.parentScene = parentScene
+		inst.position = position
+		inst.rotation = rotation
+		inst.xvelocity =  xvelocity*0.9
+		inst.yvelocity = yvelocity*0.9
+
+		parentScene.add_child(inst)
 		queue_free()
 	
 	if len(avoidObjects) > 0:

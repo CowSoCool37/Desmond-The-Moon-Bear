@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://doe1pyixxg7sg"]
+[gd_scene load_steps=10 format=3 uid="uid://doe1pyixxg7sg"]
 
 [ext_resource type="Script" path="res://Scripts/Satellite.gd" id="1_fbr8l"]
 [ext_resource type="Texture2D" uid="uid://cvjertsyjgo6m" path="res://Assets/Satellite/satellite1.png" id="1_mic4n"]
 [ext_resource type="Texture2D" uid="uid://6uerrvf5x70f" path="res://Assets/Satellite/satellite2.png" id="2_1ln4q"]
 [ext_resource type="PackedScene" uid="uid://cx3mqsa120b2t" path="res://Scenes/SatelliteBullet.tscn" id="2_yh6rt"]
 [ext_resource type="Texture2D" uid="uid://ccow2aiky58i1" path="res://Assets/Satellite/satellite3.png" id="3_5ddkf"]
+[ext_resource type="PackedScene" uid="uid://ecjvnrbon3h0" path="res://Scenes/Effect.tscn" id="3_t1di4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8wq2e"]
 animations = [{
@@ -38,6 +39,7 @@ motion_mode = 1
 script = ExtResource("1_fbr8l")
 animation = NodePath("AnimatedSprite2D")
 bullet = ExtResource("2_yh6rt")
+effect = ExtResource("3_t1di4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708

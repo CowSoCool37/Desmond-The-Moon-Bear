@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cgkg2h5c6j733"]
+[gd_scene load_steps=14 format=3 uid="uid://cgkg2h5c6j733"]
 
 [ext_resource type="Script" path="res://Scripts/Battle.gd" id="1_78srq"]
 [ext_resource type="Texture2D" uid="uid://bp25oiynbeaww" path="res://Assets/whitebg.png" id="1_d7p1q"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://1duovigffqwl" path="res://Assets/Desmond ship/shipmove2.png" id="5_4rc42"]
 [ext_resource type="Texture2D" uid="uid://b7qd05kgpvwkq" path="res://Assets/Desmond ship/shipmove3.png" id="6_enymk"]
 [ext_resource type="PackedScene" uid="uid://brpbbyi2u3l3q" path="res://Scenes/Bullet.tscn" id="6_oa4j6"]
+[ext_resource type="PackedScene" uid="uid://ecjvnrbon3h0" path="res://Scenes/Effect.tscn" id="7_sa2hq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bebhp"]
 animations = [{
@@ -61,6 +62,7 @@ parentScene = NodePath("..")
 animations = NodePath("AnimatedSprite2D")
 bullet = ExtResource("6_oa4j6")
 healthbar = NodePath("../Health Bar")
+effect = ExtResource("7_sa2hq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Desmond Ship"]
 position = Vector2(-9.99988, 10)
