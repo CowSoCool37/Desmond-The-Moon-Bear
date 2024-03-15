@@ -5,11 +5,14 @@ extends Node2D
 @export var star : PackedScene
 @export var background : Sprite2D
 @export var satellite : PackedScene
-
+var gameManager : Node2D
+var deathTimer = 0
+var desmond : CharacterBody2D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	desmond = get_node("Desmond Ship")
 	randomize()
 	for i in range(200):
 		var inst = star.instantiate() as CharacterBody2D
@@ -27,6 +30,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#print(xvelocity)
-	#print(yvelocity)
-	pass
+	if desmond.dead:
+		deathTimer += delta
+	if deathTimer > 2:
+		gameManager.restart_day()

@@ -6,7 +6,9 @@ var day = 0
 var currentScene : Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	currentScene = scenes[0].instantiate()
+	currentScene.gameManager = self
+	add_child(currentScene)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,3 +17,13 @@ func _process(delta):
 
 func next_day():
 	day += 1
+	currentScene.queue_free()
+	currentScene = scenes[1].instantiate()
+	currentScene.gameManager = self
+	add_child(currentScene)
+
+func restart_day():
+	currentScene.queue_free()
+	currentScene = scenes[1].instantiate()
+	currentScene.gameManager = self
+	add_child(currentScene)
