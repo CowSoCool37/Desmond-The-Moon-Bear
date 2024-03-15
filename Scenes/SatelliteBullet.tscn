@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cx3mqsa120b2t"]
+[gd_scene load_steps=5 format=3 uid="uid://cx3mqsa120b2t"]
 
 [ext_resource type="Script" path="res://Scripts/SatelliteBullet.gd" id="1_q7etl"]
+[ext_resource type="PackedScene" uid="uid://ecjvnrbon3h0" path="res://Scenes/Effect.tscn" id="2_kyigl"]
 [ext_resource type="Texture2D" uid="uid://bljxy17j23gkf" path="res://Assets/Satellite/satellitebullet.png" id="2_yfann"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pmmpt"]
@@ -13,6 +14,7 @@ collision_layer = 4
 collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_q7etl")
+effect = ExtResource("2_kyigl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.6, 0.6)

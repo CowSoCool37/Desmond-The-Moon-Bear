@@ -5,17 +5,20 @@ var parentScene : Node2D
 
 @export var parentXvelocity = 0
 @export var parentYvelocity = 0
-@export var effect : PackedScene
 var xvelocity = 0
 var yvelocity = 0
 
-var lifetime = 1
+var lifetime = 0.5
 var lifetimer = 0
+var effect = 1
 
 var damage = 30
 
+var animations : AnimatedSprite2D
+
+
 func _ready():
-	pass
+	animations = get_node("AnimatedSprite2D")
 
 func _physics_process(delta):
 	parentXvelocity = parentScene.xvelocity
@@ -23,22 +26,10 @@ func _physics_process(delta):
 	velocity.x = -parentXvelocity + xvelocity
 	velocity.y = -parentYvelocity + yvelocity
 	
+	if effect == 1:
+		animations.play("smoke")
+	
 	lifetimer += delta
 	if lifetimer > lifetime:
 		queue_free()
 	move_and_slide()
-
-func _on_area_2d_body_entered(body):
-	body.hp -= damage
-	var inst = effect.instantiate() as CharacterBody2D
-	inst.effect = 1
-	inst.lifetime = 0.5
-	inst.parentScene = parentScene
-	inst.position = position
-	inst.rotation = rotation
-	inst.xvelocity =  xvelocity*0.2
-	inst.yvelocity = yvelocity*0.2
-
-	parentScene.add_child(inst)
-	#print("hit")
-	queue_free()

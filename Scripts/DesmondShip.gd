@@ -42,6 +42,7 @@ func _physics_process(delta):
 	healthbar.value = hp
 	if hp <= 0:
 		print("rip bozo")
+		self.scale = Vector2.ZERO
 	
 	get_input()
 	look_at(get_global_mouse_position())
