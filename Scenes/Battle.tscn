@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgkg2h5c6j733"]
+[gd_scene load_steps=15 format=3 uid="uid://cgkg2h5c6j733"]
 
 [ext_resource type="Script" path="res://Scripts/Battle.gd" id="1_78srq"]
 [ext_resource type="Texture2D" uid="uid://bp25oiynbeaww" path="res://Assets/whitebg.png" id="1_d7p1q"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c1bvwrh0ctoe1" path="res://Scenes/Star.tscn" id="2_ff5cb"]
 [ext_resource type="PackedScene" uid="uid://doe1pyixxg7sg" path="res://Scenes/Satellite.tscn" id="3_2kjhv"]
 [ext_resource type="Script" path="res://Scripts/DesmondShip.gd" id="4_0ter6"]
+[ext_resource type="PackedScene" uid="uid://bfaoyxvb8g66b" path="res://Scenes/Hubble.tscn" id="4_iekak"]
 [ext_resource type="Texture2D" uid="uid://byguh6mplba18" path="res://Assets/Desmond ship/shipmove1.png" id="4_ufsin"]
 [ext_resource type="Texture2D" uid="uid://1duovigffqwl" path="res://Assets/Desmond ship/shipmove2.png" id="5_4rc42"]
 [ext_resource type="Texture2D" uid="uid://b7qd05kgpvwkq" path="res://Assets/Desmond ship/shipmove3.png" id="6_enymk"]
@@ -45,7 +46,7 @@ height = 280.0
 script = ExtResource("1_78srq")
 star = ExtResource("2_ff5cb")
 background = NodePath("Background")
-satellite = ExtResource("3_2kjhv")
+enemies = Array[PackedScene]([ExtResource("3_2kjhv"), ExtResource("4_iekak")])
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("1_d7p1q")

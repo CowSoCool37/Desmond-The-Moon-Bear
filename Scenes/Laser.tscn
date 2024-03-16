@@ -8,8 +8,7 @@
 size = Vector2(100, 26.6666)
 
 [node name="Laser" type="CharacterBody2D"]
-position = Vector2(200, 200)
-scale = Vector2(0.7, 0.7)
+scale = Vector2(10, 10)
 collision_layer = 4
 collision_mask = 4
 motion_mode = 1

@@ -17,3 +17,5 @@ res://Scenes/TitleScreen.gd
 res://Scenes/DayScreen.tscn
 res://Scripts/Laser.gd
 res://Scenes/Laser.tscn
+res://Scenes/Hubble.tscn
+res://Scripts/Hubble.gd

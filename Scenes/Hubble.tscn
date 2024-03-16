@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://bfaoyxvb8g66b"]
+
+[ext_resource type="Script" path="res://Scripts/Hubble.gd" id="1_2o1mi"]
+[ext_resource type="PackedScene" uid="uid://cxvde1ggxqycb" path="res://Scenes/Laser.tscn" id="2_mojjx"]
+[ext_resource type="PackedScene" uid="uid://ecjvnrbon3h0" path="res://Scenes/Effect.tscn" id="3_uou1a"]
+[ext_resource type="Texture2D" uid="uid://cjo40llmw0wpl" path="res://Assets/Hubble/hubble1.png" id="4_efmix"]
+[ext_resource type="Texture2D" uid="uid://bnm4jqep1pctq" path="res://Assets/Hubble/hubble2.png" id="5_482ae"]
+[ext_resource type="Texture2D" uid="uid://cf2oip1nqby7w" path="res://Assets/Hubble/hubble3.png" id="6_i0rq5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8wq2e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_efmix")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_482ae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_i0rq5")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmeoa"]
+size = Vector2(1153.33, 953.333)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbxwv"]
+radius = 860.93
+
+[node name="Hubble" type="CharacterBody2D" node_paths=PackedStringArray("animation")]
+scale = Vector2(0.15, 0.15)
+collision_layer = 5
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_2o1mi")
+animation = NodePath("AnimatedSprite2D")
+bullet = ExtResource("2_mojjx")
+effect = ExtResource("3_uou1a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-100, 0)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_8wq2e")
+animation = &"idle"
+frame_progress = 0.262881
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.33332, -3.33332)
+shape = SubResource("RectangleShape2D_xmeoa")
+
+[node name="AvoidArea" type="Area2D" parent="."]
+scale = Vector2(1.2, 1.2)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AvoidArea"]
+visible = false
+shape = SubResource("CircleShape2D_hbxwv")
+
+[connection signal="body_entered" from="AvoidArea" to="." method="_on_avoid_area_body_entered"]
+[connection signal="body_exited" from="AvoidArea" to="." method="_on_avoid_area_body_exited"]

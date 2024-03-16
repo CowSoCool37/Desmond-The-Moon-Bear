@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 
-var parentScene : Node2D
 
 
 @export var effect : PackedScene

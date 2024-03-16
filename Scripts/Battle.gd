@@ -4,7 +4,7 @@ extends Node2D
 
 @export var star : PackedScene
 @export var background : Sprite2D
-@export var satellite : PackedScene
+@export var enemies : Array[PackedScene]
 var gameManager : Node2D
 var deathTimer = 0
 var desmond : CharacterBody2D
@@ -20,7 +20,13 @@ func _ready():
 		background.add_child(inst)
 	
 	for i in range(3):
-		var inst = satellite.instantiate() as CharacterBody2D
+		var inst = enemies[0].instantiate() as CharacterBody2D
+		inst.parentScene = self
+		inst.position.x = randf_range(500, 800)
+		inst.position.y = randf_range(500, 800)
+		background.add_child(inst)
+	for i in range(1):
+		var inst = enemies[1].instantiate() as CharacterBody2D
 		inst.parentScene = self
 		inst.position.x = randf_range(500, 800)
 		inst.position.y = randf_range(500, 800)
