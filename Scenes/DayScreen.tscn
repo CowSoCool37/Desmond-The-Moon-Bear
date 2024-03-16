@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ev8lh6fukqnp"]
+
+[ext_resource type="Texture2D" uid="uid://bp25oiynbeaww" path="res://Assets/whitebg.png" id="1_o48it"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("1_o48it")

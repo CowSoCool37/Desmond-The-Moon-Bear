@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxvde1ggxqycb"]
+
+[ext_resource type="Script" path="res://Scripts/Laser.gd" id="1_fl7ll"]
+[ext_resource type="Texture2D" uid="uid://c6apcvttv46hw" path="res://Assets/Hubble/laser3.png" id="2_4qr81"]
+[ext_resource type="Texture2D" uid="uid://v5wf5bfcpe5w" path="res://Assets/Hubble/laser2.png" id="3_pwido"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ehas"]
+size = Vector2(100, 26.6666)
+
+[node name="Laser" type="CharacterBody2D"]
+position = Vector2(200, 200)
+scale = Vector2(0.7, 0.7)
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_fl7ll")
+
+[node name="beam" type="CharacterBody2D" parent="."]
+position = Vector2(5000, 0)
+scale = Vector2(100, 1)
+
+[node name="beamarea" type="Area2D" parent="beam"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="beam/beamarea"]
+position = Vector2(0, 0.00012207)
+shape = SubResource("RectangleShape2D_3ehas")
+
+[node name="beamsprite" type="Sprite2D" parent="beam"]
+texture = ExtResource("2_4qr81")
+
+[node name="orbsprite" type="Sprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_pwido")
+
+[connection signal="body_entered" from="beam/beamarea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="beam/beamarea" to="." method="_on_beamarea_body_exited"]
