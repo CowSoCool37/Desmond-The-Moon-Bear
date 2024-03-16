@@ -1,19 +1,19 @@
-
 extends CharacterBody2D
 
 @export var animation : AnimatedSprite2D
 var parentScene : Node2D
-@export var SPEED = 100.0
+@export var SPEED = 250.0
 var xvelocity = 0
 var yvelocity = 0
 var parentXVelocity = 0
 var parentYVelocity = 0
 var targetAngle
+const drag = 0.3
 
 var targetOffsetX = 0
 var targetOffsetY = 0
 
-const matchSpeed = 400*400
+const matchSpeed = 200*200
 
 const inaccuracy = 30
 var timer = 0
@@ -21,15 +21,18 @@ var timeMax = 0
 
 var avoidObjects = []
 
-var hp = 600
+var hp = 500
 
-var isfiring = false
-var firingTimer = 4
-var reload = 4
+var firingTimer = 1.5
+var reload = 1.5
 
 @export var bullet : PackedScene
 @export var effect : PackedScene
+@export var missile : PackedScene
 
+var missileFromSide = 50
+
+var attacking = true
 
 func randomize_target():
 	randomize()
@@ -40,8 +43,7 @@ func randomize_target():
 
 func _ready():
 	randomize_target()
-	
-	
+	animation.play("default")
 	
 func turn_towards(targetDirection, delta, turnrate):
 	var deltaDirection = fposmod(((targetDirection - rotation) + PI), 2*PI) - PI
@@ -59,21 +61,34 @@ func get_velocity_direction():
 
 
 func fire_bullet():
-	firingTimer = reload
-	isfiring = true
+	firingTimer = reload/5
 	var inst = bullet.instantiate() as CharacterBody2D
-	inst.position.x += 700
-	#inst.position = position
-	add_child(inst)
+	inst.parentScene = parentScene
+	inst.position = position
+	inst.rotation = rotation
+	inst.xvelocity = xvelocity + cos(rotation) * 400
+	inst.yvelocity = yvelocity + sin(rotation) * 400
+	inst.position.x += cos(rotation) * 120
+	inst.position.y += sin(rotation) * 120
+	parentScene.add_child(inst)
+
+func fire_missile():
+	firingTimer = reload
+	var inst = missile.instantiate() as CharacterBody2D
+	inst.parentScene = parentScene
+	inst.position = position
+	inst.rotation = rotation
+	inst.xvelocity = xvelocity + cos(rotation) * 150
+	inst.yvelocity = yvelocity + sin(rotation) * 150
+	inst.position.x += sin(rotation) * missileFromSide
+	inst.position.y += cos(rotation) * missileFromSide
+	missileFromSide *= -1
+	parentScene.add_child(inst)
 	
 
 func _physics_process(delta):
 	if firingTimer >= 0:
 		firingTimer -= delta
-
-	if isfiring and firingTimer <= 0:
-		isfiring = false
-		firingTimer = reload
 
 	if hp <= 0:
 		var inst = effect.instantiate() as CharacterBody2D
@@ -88,10 +103,17 @@ func _physics_process(delta):
 		parentScene.add_child(inst)
 		queue_free()
 	
-	if not isfiring:
-		animation.play("moving")
-		xvelocity += cos(rotation) * SPEED * delta
-		yvelocity += sin(rotation) * SPEED * delta
+	if attacking:
+		targetAngle = global_position.direction_to(Vector2(640 + targetOffsetX, 360 + targetOffsetY)).angle()
+		var deltaDir = turn_towards(targetAngle,delta,2)
+		if firingTimer <= 0 and abs(deltaDir) < 0.2:
+			if global_position.distance_to(Vector2(640,360)) < 500:
+				fire_bullet()
+			else:
+				fire_missile()
+		if global_position.distance_to(Vector2(640,360)) < 300:
+			attacking = false
+	else:
 		if len(avoidObjects) > 0:
 			var avgLocation = Vector2(0,0)
 			targetAngle = 0
@@ -100,27 +122,22 @@ func _physics_process(delta):
 			avgLocation /= len(avoidObjects)
 			
 			targetAngle = global_position.direction_to(avgLocation).angle() + PI
-			turn_towards(targetAngle,delta,1)
-			
-		elif get_total_velocity() < matchSpeed:
-			targetAngle = global_position.direction_to(Vector2(640 + targetOffsetX, 360 + targetOffsetY)).angle()
-			var deltaDir = turn_towards(targetAngle,delta,1)
-			if firingTimer <= 0 and abs(deltaDir) < 0.2:
-				fire_bullet()
-			
+			turn_towards(targetAngle,delta,2)
 		else:
-			var retrograde = fposmod(get_velocity_direction() + PI, 2*PI)
-			turn_towards(retrograde,delta,2)
-	else:
-		animation.play("idle")
-		targetAngle = global_position.direction_to(Vector2(640 + targetOffsetX, 360 + targetOffsetY)).angle()
-		turn_towards(targetAngle,delta,0.25)
+			targetAngle = global_position.direction_to(Vector2(640 + targetOffsetX, 360 + targetOffsetY)).angle() + PI
+			turn_towards(targetAngle,delta,2)
+		if global_position.distance_to(Vector2(640,360)) > 400:
+			attacking = true
+		
 	
 	parentXVelocity = parentScene.xvelocity
 	parentYVelocity = parentScene.yvelocity
-	
+	xvelocity += cos(rotation) * SPEED * delta
+	yvelocity += sin(rotation) * SPEED * delta
 	velocity.x = -parentXVelocity + xvelocity
 	velocity.y = -parentYVelocity + yvelocity
+	xvelocity *= 1 - delta*drag
+	yvelocity *= 1 - delta*drag
 	
 	timer += delta
 	if timer > timeMax:
@@ -137,4 +154,3 @@ func _on_avoid_area_body_entered(body):
 
 func _on_avoid_area_body_exited(body):
 	avoidObjects.erase(body)
-

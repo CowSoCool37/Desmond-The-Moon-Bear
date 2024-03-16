@@ -19,3 +19,7 @@ res://Scripts/Laser.gd
 res://Scenes/Laser.tscn
 res://Scenes/Hubble.tscn
 res://Scripts/Hubble.gd
+res://Scenes/SpaceShuttle.tscn
+res://Scenes/Missile.tscn
+res://Scripts/Missile.gd
+res://Scripts/SpaceShuttle.gd

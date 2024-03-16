@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6bba1joo5ocf"]
+
+[ext_resource type="Script" path="res://Scripts/SpaceShuttle.gd" id="1_h4s1m"]
+[ext_resource type="Texture2D" uid="uid://bocwh5eci1wb0" path="res://Assets/SpaceShuttle/spaceshuttle3.png" id="2_qoiba"]
+[ext_resource type="PackedScene" uid="uid://cx3mqsa120b2t" path="res://Scenes/SatelliteBullet.tscn" id="2_yfr04"]
+[ext_resource type="Texture2D" uid="uid://dpb6a2kal4dk1" path="res://Assets/SpaceShuttle/spaceshuttle2.png" id="3_03oke"]
+[ext_resource type="PackedScene" uid="uid://ecjvnrbon3h0" path="res://Scenes/Effect.tscn" id="3_hdkml"]
+[ext_resource type="Texture2D" uid="uid://lnlwfkvbk2rv" path="res://Assets/SpaceShuttle/spaceshuttle1.png" id="4_bq1gg"]
+[ext_resource type="PackedScene" uid="uid://bgcco6yuo1mnf" path="res://Scenes/Missile.tscn" id="4_hp2n6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8wq2e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qoiba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_03oke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bq1gg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbxwv"]
+radius = 860.93
+
+[node name="Satellite" type="CharacterBody2D" node_paths=PackedStringArray("animation")]
+scale = Vector2(0.15, 0.15)
+collision_layer = 5
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_h4s1m")
+animation = NodePath("AnimatedSprite2D")
+bullet = ExtResource("2_yfr04")
+effect = ExtResource("3_hdkml")
+missile = ExtResource("4_hp2n6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_8wq2e")
+frame = 2
+frame_progress = 0.403764
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(700, 0, -400, 486.667, -400, -486.667)
+
+[node name="AvoidArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AvoidArea"]
+shape = SubResource("CircleShape2D_hbxwv")
+
+[connection signal="body_entered" from="AvoidArea" to="." method="_on_avoid_area_body_entered"]
+[connection signal="body_exited" from="AvoidArea" to="." method="_on_avoid_area_body_exited"]

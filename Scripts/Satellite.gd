@@ -59,8 +59,8 @@ func fire_bullet():
 	inst.parentScene = parentScene
 	inst.position = position
 	inst.rotation = rotation
-	inst.xvelocity = parentScene.xvelocity + cos(rotation) * 300
-	inst.yvelocity = parentScene.yvelocity + sin(rotation) * 300
+	inst.xvelocity = xvelocity + cos(rotation) * 300
+	inst.yvelocity = yvelocity + sin(rotation) * 300
 	inst.position.x += cos(rotation) * 30
 	inst.position.y += sin(rotation) * 30
 	parentScene.add_child(inst)

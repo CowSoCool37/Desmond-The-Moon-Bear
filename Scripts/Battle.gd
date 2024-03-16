@@ -19,19 +19,24 @@ func _ready():
 		inst.parentScene = self
 		background.add_child(inst)
 	
-	for i in range(3):
+	for i in range(0):
 		var inst = enemies[0].instantiate() as CharacterBody2D
 		inst.parentScene = self
 		inst.position.x = randf_range(500, 800)
 		inst.position.y = randf_range(500, 800)
 		background.add_child(inst)
-	for i in range(1):
+	for i in range(0):
 		var inst = enemies[1].instantiate() as CharacterBody2D
 		inst.parentScene = self
 		inst.position.x = randf_range(500, 800)
 		inst.position.y = randf_range(500, 800)
 		background.add_child(inst)
-
+	for i in range(2):
+		var inst = enemies[2].instantiate() as CharacterBody2D
+		inst.parentScene = self
+		inst.position.x = randf_range(500, 800)
+		inst.position.y = randf_range(500, 800)
+		background.add_child(inst)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
