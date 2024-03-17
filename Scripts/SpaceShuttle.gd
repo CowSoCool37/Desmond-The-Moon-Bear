@@ -44,6 +44,7 @@ func randomize_target():
 func _ready():
 	randomize_target()
 	animation.play("default")
+	parentScene.set_boss_bar(hp)
 	
 func turn_towards(targetDirection, delta, turnrate):
 	var deltaDirection = fposmod(((targetDirection - rotation) + PI), 2*PI) - PI

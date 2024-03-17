@@ -1,5 +1,5 @@
 extends Node2D
-var day = 0
+var day = -1
 
 @export var scenes : Array[PackedScene]
 
@@ -20,10 +20,12 @@ func next_day():
 	currentScene.queue_free()
 	currentScene = scenes[1].instantiate()
 	currentScene.gameManager = self
+	currentScene.day = day
 	add_child(currentScene)
 
 func restart_day():
 	currentScene.queue_free()
 	currentScene = scenes[1].instantiate()
 	currentScene.gameManager = self
+	currentScene.day = day
 	add_child(currentScene)

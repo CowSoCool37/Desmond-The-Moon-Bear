@@ -81,6 +81,7 @@ func _physics_process(delta):
 		inst.yvelocity = yvelocity*0.9
 
 		parentScene.add_child(inst)
+		parentScene.increment_enemies_killed()
 		queue_free()
 	
 	if len(avoidObjects) > 0:

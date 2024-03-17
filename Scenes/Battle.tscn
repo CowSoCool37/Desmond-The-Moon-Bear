@@ -85,3 +85,18 @@ offset_top = 671.0
 offset_right = 917.0
 offset_bottom = 698.0
 show_percentage = false
+
+[node name="Boss Health Bar" type="ProgressBar" parent="."]
+offset_left = 205.0
+offset_top = 44.0
+offset_right = 1073.0
+offset_bottom = 56.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_right = 1279.0
+offset_bottom = 132.0
+theme_override_font_sizes/font_size = 30
+text = "Sample Text"
+horizontal_alignment = 1

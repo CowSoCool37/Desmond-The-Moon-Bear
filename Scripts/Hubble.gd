@@ -24,7 +24,7 @@ var avoidObjects = []
 var hp = 600
 
 var isfiring = false
-var firingTimer = 4
+var firingTimer = 6
 var reload = 4
 
 @export var bullet : PackedScene
@@ -40,6 +40,7 @@ func randomize_target():
 
 func _ready():
 	randomize_target()
+	parentScene.set_boss_bar(hp)
 	
 	
 	

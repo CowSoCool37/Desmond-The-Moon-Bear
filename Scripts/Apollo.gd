@@ -57,6 +57,7 @@ func _ready():
 	collisionShape = get_node("CollisionShape2D")
 	collisionShape.scale = hitbox1
 	randomize()
+	parentScene.set_boss_bar(hp)
 
 func turn_towards(targetDirection, delta, turnrate):
 	var deltaDirection = fposmod(((targetDirection - rotation) + PI), 2*PI) - PI
@@ -134,10 +135,11 @@ func _physics_process(delta):
 			queue_free()
 		else:
 			hp = 400
-			SPEED += 50
+			parentScene.set_boss_bar(hp)
 			drag += 0.15
 			stage += 1
 			if stage == 2:
+				SPEED += 80
 				collisionShape.scale = hitbox2
 			else:
 				collisionShape.scale = hitbox3
