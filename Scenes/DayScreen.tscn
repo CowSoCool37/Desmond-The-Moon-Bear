@@ -1,9 +1,86 @@
-[gd_scene load_steps=2 format=3 uid="uid://ev8lh6fukqnp"]
+[gd_scene load_steps=11 format=3 uid="uid://2jqaf8c3iq5b"]
 
-[ext_resource type="Texture2D" uid="uid://bp25oiynbeaww" path="res://Assets/whitebg.png" id="1_o48it"]
+[ext_resource type="Script" path="res://Scripts/DayScreen.gd" id="1_mjpxy"]
+[ext_resource type="Texture2D" uid="uid://dggibl2lxlkmi" path="res://Assets/DayScreens/day0.png" id="2_3s1wp"]
+[ext_resource type="Texture2D" uid="uid://crgajy6oi8bic" path="res://Assets/DayScreens/day1.png" id="3_qmvuv"]
+[ext_resource type="Texture2D" uid="uid://jtsw7glt5aac" path="res://Assets/DayScreens/day2.png" id="4_v1rg3"]
+[ext_resource type="Texture2D" uid="uid://detxlt0kx7c4j" path="res://Assets/DayScreens/day3.png" id="5_kv3gx"]
+[ext_resource type="Texture2D" uid="uid://gbx7abk872ua" path="res://Assets/DayScreens/day4.png" id="6_fwosm"]
+[ext_resource type="Texture2D" uid="uid://i75h4547ur6x" path="res://Assets/DayScreens/day5.png" id="7_yc6k6"]
+[ext_resource type="Texture2D" uid="uid://pyfc8yk6ecv2" path="res://Assets/DayScreens/day6.png" id="8_lon76"]
+[ext_resource type="Texture2D" uid="uid://br2w1rj4ktj0v" path="res://Assets/DayScreens/day7.png" id="9_aq8rf"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_56h2h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3s1wp")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qmvuv")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_v1rg3")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_kv3gx")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fwosm")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_yc6k6")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_lon76")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_aq8rf")
+}],
+"loop": true,
+"name": &"7",
+"speed": 5.0
+}]
 
-[node name="background" type="Sprite2D" parent="."]
+[node name="DayScreen" type="Node2D"]
+script = ExtResource("1_mjpxy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(640, 360)
-texture = ExtResource("1_o48it")
+sprite_frames = SubResource("SpriteFrames_56h2h")
+animation = &"7"

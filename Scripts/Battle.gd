@@ -21,6 +21,8 @@ var day
 var textLabel : Label
 var bossHealthBar : ProgressBar
 
+var rumble : AudioStreamPlayer
+
 func increment_enemies_killed():
 	enemiesKilled += 1
 
@@ -146,6 +148,7 @@ func _ready():
 	textLabel = get_node("Label")
 	desmond = get_node("Desmond Ship")
 	bossHealthBar = get_node("Boss Health Bar")
+	rumble = get_node("rumble")
 	bossHealthBar.visible = false
 	randomize()
 	for i in range(200):
@@ -177,3 +180,7 @@ func _process(delta):
 			gameManager.restart_day()
 		else:
 			gameManager.next_day()
+
+
+func _on_rumble_finished():
+	rumble.play()

@@ -25,3 +25,6 @@ res://Scripts/Missile.gd
 res://Scripts/SpaceShuttle.gd
 res://Scenes/Apollo.tscn
 res://Scripts/Apollo.gd
+res://Scripts/TitleScreen.gd
+res://Scenes/Static.tscn
+res://Scripts/DayScreen.gd
