@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cgkg2h5c6j733"]
+[gd_scene load_steps=17 format=3 uid="uid://cgkg2h5c6j733"]
 
 [ext_resource type="Script" path="res://Scripts/Battle.gd" id="1_78srq"]
 [ext_resource type="Texture2D" uid="uid://bp25oiynbeaww" path="res://Assets/whitebg.png" id="1_d7p1q"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c6bba1joo5ocf" path="res://Scenes/SpaceShuttle.tscn" id="5_kwshh"]
 [ext_resource type="Texture2D" uid="uid://b7qd05kgpvwkq" path="res://Assets/Desmond ship/shipmove3.png" id="6_enymk"]
 [ext_resource type="PackedScene" uid="uid://brpbbyi2u3l3q" path="res://Scenes/Bullet.tscn" id="6_oa4j6"]
+[ext_resource type="PackedScene" uid="uid://c4f5055pg7mmo" path="res://Scenes/Apollo.tscn" id="6_rtaet"]
 [ext_resource type="PackedScene" uid="uid://ecjvnrbon3h0" path="res://Scenes/Effect.tscn" id="7_sa2hq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bebhp"]
@@ -47,7 +48,7 @@ height = 280.0
 script = ExtResource("1_78srq")
 star = ExtResource("2_ff5cb")
 background = NodePath("Background")
-enemies = Array[PackedScene]([ExtResource("3_2kjhv"), ExtResource("4_iekak"), ExtResource("5_kwshh")])
+enemies = Array[PackedScene]([ExtResource("3_2kjhv"), ExtResource("4_iekak"), ExtResource("5_kwshh"), ExtResource("6_rtaet")])
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("1_d7p1q")

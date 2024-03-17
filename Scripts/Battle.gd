@@ -9,6 +9,9 @@ var gameManager : Node2D
 var deathTimer = 0
 var desmond : CharacterBody2D
 
+func spawn_location(distance):
+	var angle = randf_range(0,2*PI)
+	return Vector2(sin(angle) * distance, cos(angle) * distance)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,8 +34,14 @@ func _ready():
 		inst.position.x = randf_range(500, 800)
 		inst.position.y = randf_range(500, 800)
 		background.add_child(inst)
-	for i in range(2):
+	for i in range(0):
 		var inst = enemies[2].instantiate() as CharacterBody2D
+		inst.parentScene = self
+		inst.position.x = randf_range(500, 800)
+		inst.position.y = randf_range(500, 800)
+		background.add_child(inst)
+	for i in range(1):
+		var inst = enemies[3].instantiate() as CharacterBody2D
 		inst.parentScene = self
 		inst.position.x = randf_range(500, 800)
 		inst.position.y = randf_range(500, 800)

@@ -23,3 +23,5 @@ res://Scenes/SpaceShuttle.tscn
 res://Scenes/Missile.tscn
 res://Scripts/Missile.gd
 res://Scripts/SpaceShuttle.gd
+res://Scenes/Apollo.tscn
+res://Scripts/Apollo.gd
