@@ -22,6 +22,7 @@ var targetOffsetY
 var SPEED = 700
 var animation
 
+
 func randomize_target():
 	randomize()
 	targetOffsetX = randf_range(-inaccuracy, inaccuracy)

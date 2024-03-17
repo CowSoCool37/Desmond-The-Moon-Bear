@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cx3mqsa120b2t"]
+[gd_scene load_steps=6 format=3 uid="uid://cx3mqsa120b2t"]
 
 [ext_resource type="Script" path="res://Scripts/SatelliteBullet.gd" id="1_q7etl"]
 [ext_resource type="PackedScene" uid="uid://ecjvnrbon3h0" path="res://Scenes/Effect.tscn" id="2_kyigl"]
 [ext_resource type="Texture2D" uid="uid://bljxy17j23gkf" path="res://Assets/Satellite/satellitebullet.png" id="2_yfann"]
+[ext_resource type="AudioStream" uid="uid://cvikc1nqqgsv7" path="res://Assets/Sounds/fire2.mp3" id="4_y1b0h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pmmpt"]
 radius = 30.0
@@ -27,5 +28,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_pmmpt")
+
+[node name="fire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_y1b0h")
+volume_db = -8.478
+pitch_scale = 0.8
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

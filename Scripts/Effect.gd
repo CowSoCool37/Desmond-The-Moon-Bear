@@ -16,9 +16,22 @@ var damage = 30
 
 var animations : AnimatedSprite2D
 
+var hit1: AudioStreamPlayer
+var hit2: AudioStreamPlayer
+var explosion: AudioStreamPlayer
 
 func _ready():
 	animations = get_node("AnimatedSprite2D")
+	hit1 = get_node("hit1")
+	hit2 = get_node("hit2")
+	explosion = get_node("explosion")
+	if effect == 1:
+		if randi_range(0,1) == 1:
+			hit1.play()
+		else:
+			hit2.play()
+	else:
+		explosion.play()
 
 func _physics_process(delta):
 	parentXvelocity = parentScene.xvelocity

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cgkg2h5c6j733"]
+[gd_scene load_steps=19 format=3 uid="uid://cgkg2h5c6j733"]
 
 [ext_resource type="Script" path="res://Scripts/Battle.gd" id="1_78srq"]
 [ext_resource type="Texture2D" uid="uid://bp25oiynbeaww" path="res://Assets/whitebg.png" id="1_d7p1q"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://brpbbyi2u3l3q" path="res://Scenes/Bullet.tscn" id="6_oa4j6"]
 [ext_resource type="PackedScene" uid="uid://c4f5055pg7mmo" path="res://Scenes/Apollo.tscn" id="6_rtaet"]
 [ext_resource type="PackedScene" uid="uid://ecjvnrbon3h0" path="res://Scenes/Effect.tscn" id="7_sa2hq"]
+[ext_resource type="AudioStream" uid="uid://b4saej4q30nn1" path="res://Assets/Sounds/rocket1.mp3" id="15_50hsr"]
 [ext_resource type="AudioStream" uid="uid://jcvwwhk25w5w" path="res://Assets/Sounds/cinematic-deep-rumble-6418.mp3" id="15_liogv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bebhp"]
@@ -80,7 +81,11 @@ position = Vector2(-4.76837e-07, -1.90735e-06)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mxxge")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Desmond Ship"]
+[node name="rocket" type="AudioStreamPlayer" parent="Desmond Ship"]
+stream = ExtResource("15_50hsr")
+volume_db = -7.549
+pitch_scale = 0.37
+autoplay = true
 
 [node name="Health Bar" type="ProgressBar" parent="."]
 offset_left = 359.0
@@ -109,4 +114,5 @@ stream = ExtResource("15_liogv")
 volume_db = -10.0
 autoplay = true
 
+[connection signal="finished" from="Desmond Ship/rocket" to="Desmond Ship" method="_on_rocket_finished"]
 [connection signal="finished" from="rumble" to="." method="_on_rumble_finished"]

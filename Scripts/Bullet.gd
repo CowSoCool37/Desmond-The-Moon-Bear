@@ -14,6 +14,7 @@ var lifetimer = 0
 
 var damage = 30
 
+
 func _ready():
 	pass
 

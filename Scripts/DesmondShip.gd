@@ -16,6 +16,11 @@ var firingTimer = 0
 @export var effect : PackedScene
 var dead = false
 
+var rocket : AudioStreamPlayer
+
+func _ready():
+	rocket = get_node("rocket")
+
 func fire_bullet():
 	firingTimer = 0
 	var inst = bullet.instantiate() as CharacterBody2D
@@ -32,9 +37,11 @@ func get_input():
 	if Input.is_action_pressed("thrust"):
 		thrust = 1
 		animations.play("moving")
+		rocket.stream_paused = false
 	else:
 		thrust = 0
 		animations.play("idle")
+		rocket.stream_paused = true
 		
 	if Input.is_action_pressed("fire"):
 		if firingTimer > firingCoolDown:
@@ -68,3 +75,7 @@ func _physics_process(delta):
 	
 	firingTimer += delta
 	move_and_slide()
+
+
+func _on_rocket_finished():
+	rocket.play()

@@ -15,9 +15,12 @@ const drag = 0.4
 
 var damage = 20
 
+var fire: AudioStreamPlayer
 
 func _ready():
-	pass
+	fire = get_node("fire")
+	if global_position.distance_to(Vector2(640,360)) < 800:
+		fire.play()
 
 func _physics_process(delta):
 	parentXvelocity = parentScene.xvelocity

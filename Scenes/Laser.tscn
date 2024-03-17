@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxvde1ggxqycb"]
+[gd_scene load_steps=7 format=3 uid="uid://cxvde1ggxqycb"]
 
 [ext_resource type="Script" path="res://Scripts/Laser.gd" id="1_fl7ll"]
 [ext_resource type="Texture2D" uid="uid://c6apcvttv46hw" path="res://Assets/Hubble/laser3.png" id="2_4qr81"]
 [ext_resource type="Texture2D" uid="uid://v5wf5bfcpe5w" path="res://Assets/Hubble/laser2.png" id="3_pwido"]
+[ext_resource type="AudioStream" uid="uid://bq4n02f2b71eo" path="res://Assets/Sounds/laser charge.wav" id="4_ddl4y"]
+[ext_resource type="AudioStream" uid="uid://owtbfsspub2e" path="res://Assets/Sounds/laser fire.wav" id="5_n7sku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ehas"]
 size = Vector2(100, 26.6666)
@@ -33,6 +35,18 @@ texture = ExtResource("2_4qr81")
 rotation = 3.14159
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_pwido")
+
+[node name="charge" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ddl4y")
+volume_db = 12.181
+pitch_scale = 0.78
+autoplay = true
+
+[node name="fire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_n7sku")
+volume_db = -8.432
+pitch_scale = 1.96
+autoplay = true
 
 [connection signal="body_entered" from="beam/beamarea" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="beam/beamarea" to="." method="_on_beamarea_body_exited"]

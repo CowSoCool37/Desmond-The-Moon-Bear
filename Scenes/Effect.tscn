@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ecjvnrbon3h0"]
+[gd_scene load_steps=18 format=3 uid="uid://ecjvnrbon3h0"]
 
 [ext_resource type="Script" path="res://Scripts/Effect.gd" id="1_4cxlx"]
 [ext_resource type="Texture2D" uid="uid://bt8rgf2retf54" path="res://Assets/effects/smoke1.png" id="2_at4jy"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://c4md33cmplhpk" path="res://Assets/effects/sparks4.png" id="11_ts12h"]
 [ext_resource type="Texture2D" uid="uid://d16jvdpnrlh75" path="res://Assets/effects/sparks5.png" id="12_vgb4n"]
 [ext_resource type="Texture2D" uid="uid://drp7cdbdcbhvf" path="res://Assets/effects/sparks6.png" id="13_ijfm6"]
+[ext_resource type="AudioStream" uid="uid://danjl5l6hq37n" path="res://Assets/Sounds/hit1.mp3" id="14_o7hsc"]
+[ext_resource type="AudioStream" uid="uid://dg55fmexlh1on" path="res://Assets/Sounds/hit2.mp3" id="15_0a6jc"]
+[ext_resource type="AudioStream" uid="uid://c8u65d841w05y" path="res://Assets/Sounds/ExplodeDistant_1.wav" id="16_x0soc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tpk17"]
 animations = [{
@@ -74,3 +77,17 @@ script = ExtResource("1_4cxlx")
 position = Vector2(-2.86102e-06, 0)
 sprite_frames = SubResource("SpriteFrames_tpk17")
 animation = &"sparks"
+
+[node name="hit1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_o7hsc")
+pitch_scale = 0.82
+
+[node name="hit2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_0a6jc")
+volume_db = 4.684
+pitch_scale = 2.01
+
+[node name="explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_x0soc")
+volume_db = 6.559
+pitch_scale = 1.28

@@ -22,7 +22,7 @@ var timeMax = 0
 
 var avoidObjects = []
 
-var hp = 500
+var hp = 600
 
 var isfiring = false
 var firingTimer = 4
@@ -44,6 +44,8 @@ var stage = 1
 
 var missileFromSide = 50
 var attacking = true
+
+var spawnedMore = false
 
 func randomize_target():
 	randomize()
@@ -113,6 +115,11 @@ func fire_bullet():
 	fire_bullet_helper(rotation + randf_range(-0.5,0.5))
 
 func _physics_process(delta):
+	if !spawnedMore and hp < 250:
+		spawnedMore = true
+		for i in range(5):
+			parentScene.spawn_satellite(parentScene.spawn_location(1200))
+	
 	if firingTimer >= 0:
 		firingTimer -= delta
 
@@ -141,6 +148,9 @@ func _physics_process(delta):
 			if stage == 2:
 				SPEED += 80
 				collisionShape.scale = hitbox2
+				spawnedMore = false
+				for i in range(5):
+					parentScene.spawn_satellite(parentScene.spawn_location(1200))
 			else:
 				collisionShape.scale = hitbox3
 	

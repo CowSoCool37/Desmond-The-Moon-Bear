@@ -12,7 +12,7 @@ var targetAngle
 var targetOffsetX = 0
 var targetOffsetY = 0
 
-const matchSpeed = 200*200
+const matchSpeed = 300*300
 
 const inaccuracy = 30
 var timer = 0

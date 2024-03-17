@@ -23,7 +23,10 @@ var hitting = false
 var target : Node2D
 var beamscale = 0
 
+var fire: AudioStreamPlayer
+
 func _ready():
+	fire = get_node("fire")
 	beam = get_node("beam")
 	orbsprite = get_node("orbsprite")
 	beamsprite = get_node("beam/beamsprite")
@@ -33,9 +36,11 @@ func _ready():
 func _process(delta):
 	lifetimer += delta
 	if lifetimer < 1.4:
+		fire.stream_paused = true
 		orbsprite.scale = Vector2(lifetimer/2,lifetimer/2)
 		beam.scale = Vector2(100,lifetimer/2)
 	else:
+		fire.stream_paused = false
 		orbsprite.texture = orb2
 		beamsprite.texture = beam2
 		beamscale = 0.7 + sin(lifetimer*20) * 0.1

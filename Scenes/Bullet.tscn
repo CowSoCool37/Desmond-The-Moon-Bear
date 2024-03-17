@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://brpbbyi2u3l3q"]
+[gd_scene load_steps=6 format=3 uid="uid://brpbbyi2u3l3q"]
 
 [ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_twoji"]
 [ext_resource type="PackedScene" uid="uid://ecjvnrbon3h0" path="res://Scenes/Effect.tscn" id="2_dwrjb"]
 [ext_resource type="Texture2D" uid="uid://e6dqge81iter" path="res://Assets/bullet.png" id="2_jwb2e"]
+[ext_resource type="AudioStream" uid="uid://e3cve13kosmd" path="res://Assets/Sounds/fire3.wav" id="4_ucag6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pmmpt"]
 radius = 7.0
@@ -27,5 +28,11 @@ collision_mask = 4
 position = Vector2(-1, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_pmmpt")
+
+[node name="fire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ucag6")
+volume_db = 6.558
+pitch_scale = 1.58
+autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -28,3 +28,4 @@ res://Scripts/Apollo.gd
 res://Scripts/TitleScreen.gd
 res://Scenes/Static.tscn
 res://Scripts/DayScreen.gd
+res://Scripts/Static.gd

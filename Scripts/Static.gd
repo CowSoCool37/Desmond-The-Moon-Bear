@@ -1,12 +1,10 @@
 extends Node2D
 
-var day = 0
-var animation : AnimatedSprite2D
 var gameManager : Node2D
+var day
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	animation = get_node("AnimatedSprite2D")
-	animation.play(str(day))
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

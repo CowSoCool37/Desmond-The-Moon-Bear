@@ -21,7 +21,7 @@ var timeMax = 0
 
 var avoidObjects = []
 
-var hp = 500
+var hp = 700
 
 var firingTimer = 1.5
 var reload = 1.5
@@ -33,6 +33,8 @@ var reload = 1.5
 var missileFromSide = 50
 
 var attacking = true
+
+var spawnedMore = false
 
 func randomize_target():
 	randomize()
@@ -88,6 +90,11 @@ func fire_missile():
 	
 
 func _physics_process(delta):
+	if !spawnedMore and hp < 350:
+		spawnedMore = true
+		for i in range(5):
+			parentScene.spawn_satellite(parentScene.spawn_location(1200))
+
 	if firingTimer >= 0:
 		firingTimer -= delta
 

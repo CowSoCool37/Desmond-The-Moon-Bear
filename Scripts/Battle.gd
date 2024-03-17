@@ -25,10 +25,13 @@ var rumble : AudioStreamPlayer
 
 func increment_enemies_killed():
 	enemiesKilled += 1
+	match day:
+		3,6:
+			spawn_satellite(spawn_location(1200))
 
 func spawn_location(distance):
 	var angle = randf_range(0,2*PI)
-	return Vector2(sin(angle) * distance, cos(angle) * distance)
+	return Vector2(sin(angle) * distance + 640, cos(angle) * distance + 360)
 
 func check_win():
 	match day:
@@ -39,13 +42,13 @@ func check_win():
 			if enemiesKilled > 4:
 				objectiveReached = true
 		3:
-			if gameTimer > 120:
+			if gameTimer > 110:
 				objectiveReached = true
 		4:
 			if enemiesKilled > 19:
 				objectiveReached = true
 		6:
-			if gameTimer > 180:
+			if gameTimer > 140:
 				objectiveReached = true
 		_:
 			if boss == null:
@@ -75,17 +78,17 @@ func set_dynamic_label():
 		0:
 			textLabel.text = "Use SPACE to move and MOUSE to aim and shoot.\nDestroy the capitalist satellite to advance."
 		1:
-			textLabel.text = "Destroy " + str(5-enemiesKilled) + " more satellies" 
+			textLabel.text = "Destroy " + str(5-enemiesKilled) + " more satellites" 
 		2:
 			textLabel.text = "BOSS BATTLE: Hubble Space Laser"
 		3:
-			textLabel.text = "Survive: " + str(max(120 - roundi(gameTimer), 0))
+			textLabel.text = "Survive: " + str(max(110 - roundi(gameTimer), 0))
 		4:
-			textLabel.text = "Destroy " + str(20-enemiesKilled) + " more satellies" 
+			textLabel.text = "Destroy " + str(20-enemiesKilled) + " more satellites" 
 		5:
 			textLabel.text = "BOSS BATTLE: Space Shuttle"
 		6:
-			textLabel.text = "Survive: " + str(max(180 - roundi(gameTimer), 0))
+			textLabel.text = "Survive: " + str(max(140 - roundi(gameTimer), 0))
 		7:
 			if boss != null:
 				if boss.stage == 1:
@@ -133,7 +136,7 @@ func spawn_initial_enemies():
 			boss.position = Vector2(200, 1000)
 			background.add_child(boss)
 		6:
-			for i in range(6):
+			for i in range(8):
 				spawn_satellite(spawn_location(800))
 		7:
 			for i in range(4):

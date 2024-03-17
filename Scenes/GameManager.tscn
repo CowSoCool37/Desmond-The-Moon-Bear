@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://i5j71xpjxx12"]
+[gd_scene load_steps=6 format=3 uid="uid://i5j71xpjxx12"]
 
 [ext_resource type="Script" path="res://Scenes/GameManager.gd" id="1_6eif4"]
 [ext_resource type="PackedScene" uid="uid://bwgs14dvdm031" path="res://Scenes/TitleScreen.tscn" id="2_1nvbd"]
 [ext_resource type="PackedScene" uid="uid://cgkg2h5c6j733" path="res://Scenes/Battle.tscn" id="3_0hlev"]
+[ext_resource type="PackedScene" uid="uid://bgql2hf3ecpee" path="res://Scenes/Static.tscn" id="4_x4gp3"]
+[ext_resource type="PackedScene" uid="uid://2jqaf8c3iq5b" path="res://Scenes/DayScreen.tscn" id="5_pty7c"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_6eif4")
-scenes = Array[PackedScene]([ExtResource("2_1nvbd"), ExtResource("3_0hlev")])
+scenes = Array[PackedScene]([ExtResource("2_1nvbd"), ExtResource("3_0hlev"), ExtResource("4_x4gp3"), ExtResource("5_pty7c")])

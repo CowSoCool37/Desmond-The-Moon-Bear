@@ -21,15 +21,16 @@ var timeMax = 0
 
 var avoidObjects = []
 
-var hp = 600
+var hp = 1000
 
 var isfiring = false
-var firingTimer = 6
+var firingTimer = 4
 var reload = 4
 
 @export var bullet : PackedScene
 @export var effect : PackedScene
 
+var spawnedMore = false
 
 func randomize_target():
 	randomize()
@@ -69,6 +70,11 @@ func fire_bullet():
 	
 
 func _physics_process(delta):
+	if !spawnedMore and hp < 700:
+		spawnedMore = true
+		for i in range(5):
+			parentScene.spawn_satellite(parentScene.spawn_location(1200))
+	
 	if firingTimer >= 0:
 		firingTimer -= delta
 
@@ -90,10 +96,10 @@ func _physics_process(delta):
 		queue_free()
 	
 	if not isfiring:
-		animation.play("moving")
-		xvelocity += cos(rotation) * SPEED * delta
-		yvelocity += sin(rotation) * SPEED * delta
 		if len(avoidObjects) > 0:
+			xvelocity += cos(rotation) * SPEED * delta
+			yvelocity += sin(rotation) * SPEED * delta
+			animation.play("moving")
 			var avgLocation = Vector2(0,0)
 			targetAngle = 0
 			for i in avoidObjects:
@@ -104,6 +110,12 @@ func _physics_process(delta):
 			turn_towards(targetAngle,delta,1)
 			
 		elif get_total_velocity() < matchSpeed:
+			if global_position.distance_to(Vector2(640,360)) > 400:
+				animation.play("moving")
+				xvelocity += cos(rotation) * SPEED * delta
+				yvelocity += sin(rotation) * SPEED * delta
+			else:
+				animation.play("idle")
 			targetAngle = global_position.direction_to(Vector2(640 + targetOffsetX, 360 + targetOffsetY)).angle()
 			var deltaDir = turn_towards(targetAngle,delta,1)
 			if firingTimer <= 0 and abs(deltaDir) < 0.2:
@@ -112,6 +124,9 @@ func _physics_process(delta):
 		else:
 			var retrograde = fposmod(get_velocity_direction() + PI, 2*PI)
 			turn_towards(retrograde,delta,2)
+			animation.play("moving")
+			xvelocity += cos(rotation) * SPEED * delta
+			yvelocity += sin(rotation) * SPEED * delta
 	else:
 		animation.play("idle")
 		targetAngle = global_position.direction_to(Vector2(640 + targetOffsetX, 360 + targetOffsetY)).angle()
