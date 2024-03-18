@@ -29,3 +29,9 @@ res://Scripts/TitleScreen.gd
 res://Scenes/Static.tscn
 res://Scripts/DayScreen.gd
 res://Scripts/Static.gd
+res://Win.gd
+res://Scenes/win.tscn
+res://Scripts/Win.gd
+res://Scenes/flag.gd
+res://Scripts/GameManager.gd
+res://Scenes/Win.tscn

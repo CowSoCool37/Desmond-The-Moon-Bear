@@ -27,7 +27,7 @@ var hp = 600
 var isfiring = false
 var firingTimer = 4
 var laserReload = 4
-var missileReload = 1
+var missileReload = 1.5
 var bulletReload = 0.4
 
 @export var bullet : PackedScene
@@ -81,6 +81,7 @@ func fire_laser():
 	isfiring = true
 	var inst = laser.instantiate() as CharacterBody2D
 	inst.position.x += 850
+	inst.damage = 40
 	#inst.position = position
 	add_child(inst)
 	
@@ -95,7 +96,7 @@ func fire_missile():
 	inst.position.x += sin(rotation) * missileFromSide
 	inst.position.y += cos(rotation) * missileFromSide
 	missileFromSide *= -1
-	inst.damage = 25
+	inst.damage = 20
 	parentScene.add_child(inst)
 
 func fire_bullet_helper(angle):

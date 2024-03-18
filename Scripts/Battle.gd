@@ -65,7 +65,7 @@ func set_initial_label():
 		3:
 			textLabel.text = "Capitalists are mad at us for destroying their superweapon.\nPrepare to defend yourself."
 		4:
-			textLabel.text = "More satellies incoming. Destroy them all."
+			textLabel.text = "More satellites incoming. Destroy them all."
 		5:
 			textLabel.text = "Space fighter incoming. Try to dodge the missiles."
 		6:
@@ -165,6 +165,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_pressed("cheat"):
+		objectiveReached = true
 	gameTimer += delta
 	check_win()
 	

@@ -19,7 +19,16 @@ func _ready():
 func _process(delta):
 	sceneTimer += delta
 	totalTimer += delta
-	if sceneTimer > 0.8:
+	if sceneTimer > 0.8 and day == 8 and dayState == 0:
+		currentScene.queue_free()
+		currentScene = scenes[4].instantiate()
+		currentScene.gameManager = self
+		currentScene.day = day
+		currentScene.time = ceili(totalTimer)
+		add_child(currentScene)
+		dayState += 1
+		
+	if sceneTimer > 0.8 and day < 8:
 		match dayState:
 			0:
 				currentScene.queue_free()
@@ -68,4 +77,14 @@ func restart_day():
 	currentScene = scenes[2].instantiate()
 	currentScene.gameManager = self
 	currentScene.day = day
+	add_child(currentScene)
+
+func end_game():
+	day = -1
+	totalTimer = 0.0
+	sceneTimer = 0.0
+	dayState = -1
+	currentScene.queue_free()
+	currentScene = scenes[0].instantiate()
+	currentScene.gameManager = self
 	add_child(currentScene)

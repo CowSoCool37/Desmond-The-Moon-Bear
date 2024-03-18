@@ -21,10 +21,10 @@ var timeMax = 0
 
 var avoidObjects = []
 
-var hp = 700
+var hp = 500
 
-var firingTimer = 1.5
-var reload = 1.5
+var firingTimer = 1.75
+var reload = 1.75
 
 @export var bullet : PackedScene
 @export var effect : PackedScene
@@ -90,7 +90,7 @@ func fire_missile():
 	
 
 func _physics_process(delta):
-	if !spawnedMore and hp < 350:
+	if !spawnedMore and hp < 250:
 		spawnedMore = true
 		for i in range(5):
 			parentScene.spawn_satellite(parentScene.spawn_location(1200))

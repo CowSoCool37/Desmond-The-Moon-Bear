@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1qryyac36ll"]
+
+[ext_resource type="Script" path="res://Scripts/Win.gd" id="1_nef6h"]
+[ext_resource type="Texture2D" uid="uid://bp25oiynbeaww" path="res://Assets/whitebg.png" id="2_5kyfe"]
+[ext_resource type="Texture2D" uid="uid://1ljf5ql6ei3p" path="res://Assets/titlescreenmoon.png" id="3_te74y"]
+[ext_resource type="Texture2D" uid="uid://dd1lnf3s3x5x7" path="res://Assets/Desmond ship/shipidle.png" id="4_htq0b"]
+[ext_resource type="Script" path="res://Scenes/flag.gd" id="5_djd5q"]
+[ext_resource type="Texture2D" uid="uid://bp073u86capu3" path="res://Assets/sovietflag.png" id="6_iwdem"]
+[ext_resource type="AudioStream" uid="uid://cfmangb7nfau6" path="res://Assets/Sounds/metal pipe.mp3" id="7_m85q1"]
+[ext_resource type="Texture2D" uid="uid://b7s5vhaqh4mss" path="res://Assets/desmond.png" id="8_t0lho"]
+[ext_resource type="Texture2D" uid="uid://c6imah1knbaqf" path="res://Assets/okbutton.png" id="9_y78md"]
+
+[node name="Win" type="Node2D"]
+script = ExtResource("1_nef6h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("2_5kyfe")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(470, 360)
+texture = ExtResource("3_te74y")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(183, 457)
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("4_htq0b")
+
+[node name="flag" type="CharacterBody2D" parent="."]
+position = Vector2(641, 548)
+script = ExtResource("5_djd5q")
+
+[node name="Sprite2D" type="Sprite2D" parent="flag"]
+position = Vector2(-98, -173)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("6_iwdem")
+
+[node name="pipefalling" type="AudioStreamPlayer" parent="flag"]
+stream = ExtResource("7_m85q1")
+volume_db = -13.117
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(906, 463)
+scale = Vector2(0.38, 0.38)
+texture = ExtResource("8_t0lho")
+
+[node name="Label" type="Label" parent="."]
+offset_top = 1.0
+offset_right = 1277.0
+offset_bottom = 107.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Mission Accomplished!
+You made it to the moon in: XX:XX"
+horizontal_alignment = 1
+
+[node name="OK" type="Button" parent="."]
+offset_left = 485.0
+offset_top = 563.0
+offset_right = 793.0
+offset_bottom = 701.0
+icon = ExtResource("9_y78md")
+flat = true
+
+[connection signal="pressed" from="OK" to="." method="_on_ok_pressed"]
