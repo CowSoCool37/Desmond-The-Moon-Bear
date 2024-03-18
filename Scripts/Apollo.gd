@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var animation : AnimatedSprite2D
 var parentScene : Node2D
-@export var SPEED = 100.0
+@export var SPEED = 80.0
 var xvelocity = 0
 var yvelocity = 0
 var parentXVelocity = 0
@@ -182,7 +182,7 @@ func _physics_process(delta):
 		else:
 			animation.play("idle1")
 			targetAngle = global_position.direction_to(Vector2(640 + targetOffsetX, 360 + targetOffsetY)).angle()
-			turn_towards(targetAngle,delta,0.3)
+			turn_towards(targetAngle,delta,0.25)
 
 	elif stage == 2:
 		if attacking:
