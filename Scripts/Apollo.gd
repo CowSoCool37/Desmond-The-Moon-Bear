@@ -147,7 +147,7 @@ func _physics_process(delta):
 			drag += 0.15
 			stage += 1
 			if stage == 2:
-				SPEED += 80
+				SPEED += 85
 				collisionShape.scale = hitbox2
 				spawnedMore = false
 				for i in range(5):

@@ -16,7 +16,7 @@ var boss : CharacterBody2D
 var enemiesKilled = 0
 var gameTimer = 0
 
-var day
+var day = 7
 
 var textLabel : Label
 var bossHealthBar : ProgressBar
