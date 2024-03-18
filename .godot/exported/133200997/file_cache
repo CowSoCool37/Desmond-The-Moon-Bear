@@ -1,0 +1,16 @@
+res://Scenes/Apollo.tscn::ec8d98c382d2564d4c9e7c5c82469b4a::1710741092::res://.godot/exported/133200997/export-83a9f16e47c410bdb64ebdce29fa4672-Apollo.scn
+res://Scenes/Battle.tscn::ef201180f0e3a79fc1d0fb8d80a65f50::1710741092::res://.godot/exported/133200997/export-aea5d8cbfe0bb3bdae0fd20306e7c3c1-Battle.scn
+res://Scenes/Bullet.tscn::c2572c72415a2a1f6f34c7905df2d6ff::1710741092::res://.godot/exported/133200997/export-af750b9c4b9ebab46d11aac95c540e43-Bullet.scn
+res://Scenes/DayScreen.tscn::5aaa80b15ecbc65853bc2a835e933069::1710741092::res://.godot/exported/133200997/export-e43e861402da251b61369ee96f965ef4-DayScreen.scn
+res://Scenes/Effect.tscn::12bf3179fa669107b95f4ec14ebe02a4::1710722357::res://.godot/exported/133200997/export-52b331aaf2aaf762136575646d68c533-Effect.scn
+res://Scenes/GameManager.tscn::9082e032e3a25eda9550e9f112205709::1710741092::res://.godot/exported/133200997/export-c461ecbbab34ef516f8f953f53f536ab-GameManager.scn
+res://Scenes/Hubble.tscn::2b316fe4a7662c94fec123c8e1bd5044::1710741092::res://.godot/exported/133200997/export-8406b56dfe7ea1ead2a8dce2ddda104d-Hubble.scn
+res://Scenes/Laser.tscn::f3c6ef93babba8fbad947b9b2eaa5a45::1710741092::res://.godot/exported/133200997/export-04a8c88e2b375103d405d07943cb7852-Laser.scn
+res://Scenes/Missile.tscn::a0c89fd2f0c9ae4b064c6ab20a4beed8::1710741092::res://.godot/exported/133200997/export-37e6c07caa9004dfcca57cf9412d4726-Missile.scn
+res://Scenes/Satellite.tscn::f7d44c54e1ac1f4a5367a8ce41818bfe::1710613181::res://.godot/exported/133200997/export-3bede1e37f35af4d56084eff7bb0124d-Satellite.scn
+res://Scenes/SatelliteBullet.tscn::942b2fbc16c19016772b45ab6aada20e::1710722357::res://.godot/exported/133200997/export-b8b82129f3d7227f33c360d23e22b452-SatelliteBullet.scn
+res://Scenes/SpaceShuttle.tscn::bd9a855f6e8f10f5a419b71f8109c753::1710741092::res://.godot/exported/133200997/export-900d65fc9f767421b173ffd1e0f0daba-SpaceShuttle.scn
+res://Scenes/Star.tscn::98731c526115cab35962e804dca82596::1710613181::res://.godot/exported/133200997/export-bbc7b83ac234ae0a614cd82c0e235e5f-Star.scn
+res://Scenes/Static.tscn::555fad9856afe5a78c9100ea0b623530::1710722357::res://.godot/exported/133200997/export-de8c7638d658ab050f545ce2cea7143b-Static.scn
+res://Scenes/TitleScreen.tscn::6893982c3ea3fd733a19cbe86da7b907::1710741092::res://.godot/exported/133200997/export-d5bf480432d23be8d7ee9621b49ab4de-TitleScreen.scn
+res://Scenes/Win.tscn::867863a232f382a478b0b8d3b1cdc54d::1710741092::res://.godot/exported/133200997/export-de6189c7316eaa415678e31b1d3c2c8f-Win.scn
