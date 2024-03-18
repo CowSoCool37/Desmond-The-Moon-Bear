@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cgkg2h5c6j733"]
+[gd_scene load_steps=25 format=3 uid="uid://cgkg2h5c6j733"]
 
 [ext_resource type="Script" path="res://Scripts/Battle.gd" id="1_78srq"]
 [ext_resource type="Texture2D" uid="uid://bp25oiynbeaww" path="res://Assets/whitebg.png" id="1_d7p1q"]
@@ -16,6 +16,12 @@
 [ext_resource type="PackedScene" uid="uid://ecjvnrbon3h0" path="res://Scenes/Effect.tscn" id="7_sa2hq"]
 [ext_resource type="AudioStream" uid="uid://b4saej4q30nn1" path="res://Assets/Sounds/rocket1.mp3" id="15_50hsr"]
 [ext_resource type="AudioStream" uid="uid://jcvwwhk25w5w" path="res://Assets/Sounds/cinematic-deep-rumble-6418.mp3" id="15_liogv"]
+[ext_resource type="Script" path="res://Scenes/Music.gd" id="17_3l311"]
+[ext_resource type="AudioStream" uid="uid://drd54fc6phrtk" path="res://Assets/Sounds/Desmond_tutorial.wav" id="18_673w3"]
+[ext_resource type="AudioStream" uid="uid://ubii6ajablnh" path="res://Assets/Sounds/Desmond_battle1.wav" id="19_socac"]
+[ext_resource type="AudioStream" uid="uid://dcixnhfnrwkys" path="res://Assets/Sounds/Desmond_battle1_looped.wav" id="20_vwyid"]
+[ext_resource type="AudioStream" uid="uid://5r0rfcpwfmjw" path="res://Assets/Sounds/Desmond_battle2.wav" id="21_g64mq"]
+[ext_resource type="AudioStream" uid="uid://8smxs4j27v4l" path="res://Assets/Sounds/Desmond_battle2_looped.wav" id="22_u4u3u"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bebhp"]
 animations = [{
@@ -114,5 +120,33 @@ stream = ExtResource("15_liogv")
 volume_db = -10.0
 autoplay = true
 
+[node name="Music" type="Node" parent="."]
+script = ExtResource("17_3l311")
+
+[node name="tutorial" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("18_673w3")
+volume_db = -10.0
+
+[node name="battle1" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("19_socac")
+volume_db = -6.0
+
+[node name="battle1a" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("20_vwyid")
+volume_db = -6.0
+
+[node name="battle2" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("21_g64mq")
+volume_db = -6.0
+
+[node name="battle2a" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("22_u4u3u")
+volume_db = -6.0
+
 [connection signal="finished" from="Desmond Ship/rocket" to="Desmond Ship" method="_on_rocket_finished"]
 [connection signal="finished" from="rumble" to="." method="_on_rumble_finished"]
+[connection signal="finished" from="Music/tutorial" to="Music" method="_on_tutorial_finished"]
+[connection signal="finished" from="Music/battle1" to="Music" method="_on_battle_1_finished"]
+[connection signal="finished" from="Music/battle1a" to="Music" method="_on_battle_1a_finished"]
+[connection signal="finished" from="Music/battle2" to="Music" method="_on_battle_2_finished"]
+[connection signal="finished" from="Music/battle2a" to="Music" method="_on_battle_2a_finished"]

@@ -1,5 +1,7 @@
-CharacterBody2D
 AudioStreamPlayer
+AudioStreamPlayer2D
+Node
+CharacterBody2D
 Label
 Sprite2D
 Node2D

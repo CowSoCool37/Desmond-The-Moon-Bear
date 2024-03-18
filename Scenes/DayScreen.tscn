@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://2jqaf8c3iq5b"]
+[gd_scene load_steps=12 format=3 uid="uid://2jqaf8c3iq5b"]
 
 [ext_resource type="Script" path="res://Scripts/DayScreen.gd" id="1_mjpxy"]
 [ext_resource type="Texture2D" uid="uid://dggibl2lxlkmi" path="res://Assets/DayScreens/day0.png" id="2_3s1wp"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://i75h4547ur6x" path="res://Assets/DayScreens/day5.png" id="7_yc6k6"]
 [ext_resource type="Texture2D" uid="uid://pyfc8yk6ecv2" path="res://Assets/DayScreens/day6.png" id="8_lon76"]
 [ext_resource type="Texture2D" uid="uid://br2w1rj4ktj0v" path="res://Assets/DayScreens/day7.png" id="9_aq8rf"]
+[ext_resource type="AudioStream" uid="uid://448mebdviev5" path="res://Assets/Sounds/Desmond_transition_spacey.wav" id="10_3h3db"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_56h2h"]
 animations = [{
@@ -84,3 +85,8 @@ script = ExtResource("1_mjpxy")
 position = Vector2(640, 360)
 sprite_frames = SubResource("SpriteFrames_56h2h")
 animation = &"7"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_3h3db")
+volume_db = -10.0
+autoplay = true

@@ -35,3 +35,4 @@ res://Scripts/Win.gd
 res://Scenes/flag.gd
 res://Scripts/GameManager.gd
 res://Scenes/Win.tscn
+res://Scenes/Music.gd

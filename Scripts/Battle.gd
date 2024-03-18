@@ -23,6 +23,8 @@ var bossHealthBar : ProgressBar
 
 var rumble : AudioStreamPlayer
 
+var music : Node
+
 func increment_enemies_killed():
 	enemiesKilled += 1
 	match day:
@@ -148,10 +150,13 @@ func spawn_initial_enemies():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	music = get_node("Music")
 	textLabel = get_node("Label")
 	desmond = get_node("Desmond Ship")
 	bossHealthBar = get_node("Boss Health Bar")
 	rumble = get_node("rumble")
+	
+	music.day = day
 	bossHealthBar.visible = false
 	randomize()
 	for i in range(200):
@@ -165,8 +170,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("cheat"):
-		objectiveReached = true
+	#if Input.is_action_pressed("cheat"):
+	#	objectiveReached = true
 	gameTimer += delta
 	check_win()
 	
