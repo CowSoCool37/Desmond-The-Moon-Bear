@@ -6,9 +6,12 @@ var label : Label
 var time = 130
 var timer = 0.0
 var flagvelocity = 0.0
+
+var music : AudioStreamPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	label = get_node("Label")
+	music = get_node("music")
 	var minutes = time / 60
 	var seconds = time % 60
 	if seconds < 10:
@@ -23,3 +26,7 @@ func _ready():
 
 func _on_ok_pressed():
 	gameManager.end_game()
+
+
+func _on_audio_stream_player_finished():
+	music.play()

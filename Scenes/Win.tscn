@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1qryyac36ll"]
+[gd_scene load_steps=11 format=3 uid="uid://b1qryyac36ll"]
 
 [ext_resource type="Script" path="res://Scripts/Win.gd" id="1_nef6h"]
 [ext_resource type="Texture2D" uid="uid://bp25oiynbeaww" path="res://Assets/whitebg.png" id="2_5kyfe"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cfmangb7nfau6" path="res://Assets/Sounds/metal pipe.mp3" id="7_m85q1"]
 [ext_resource type="Texture2D" uid="uid://b7s5vhaqh4mss" path="res://Assets/desmond.png" id="8_t0lho"]
 [ext_resource type="Texture2D" uid="uid://c6imah1knbaqf" path="res://Assets/okbutton.png" id="9_y78md"]
+[ext_resource type="AudioStream" uid="uid://7lgib3pug3jh" path="res://Assets/Sounds/Desmond_Finale.wav" id="10_bqeuu"]
 
 [node name="Win" type="Node2D"]
 script = ExtResource("1_nef6h")
@@ -62,4 +63,10 @@ offset_bottom = 701.0
 icon = ExtResource("9_y78md")
 flat = true
 
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_bqeuu")
+volume_db = -5.0
+autoplay = true
+
 [connection signal="pressed" from="OK" to="." method="_on_ok_pressed"]
+[connection signal="finished" from="music" to="." method="_on_audio_stream_player_finished"]
